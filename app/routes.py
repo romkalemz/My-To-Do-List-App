@@ -24,6 +24,18 @@ class TaskList(Resource):
             tasks.append({'task': task, 'status': False})
             return {'tasks': tasks}, 201 # Return JSON response with status code *Created*
         return {'error': 'Task cannot be empty'}, 400 # Return JSON response with status code *Bad Request*
-    
+
+# Handling requests to an individual task
+class Task(Resource):
+    # Update status of task (done or not done)
+    def put(self, id):
+        if 0 <= id < len(tasks):
+            task = tasks[id]
+            task['status'] = not task ['status'] # Flip the status
+            return {'message': 'Task status updated', 'task': task}, 200
+        return {'error': 'Task not found'}, 404 # Return JSON response with status code *Not found*
+
+
 api.add_resource(Index, '/')
 api.add_resource(TaskList, '/tasks')
+api.add_resource(Task, '/task/<int:id>')
