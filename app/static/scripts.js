@@ -1,6 +1,17 @@
 const checkImagePath = '/static/images/check.png';
+
+
+function showSpinner() {
+    const spinner = document.getElementById('loading-spinner');
+    spinner.style.display = 'block'; // Show the spinner
+}
+function hideSpinner() {
+    const spinner = document.getElementById('loading-spinner');
+    spinner.style.display = 'none'; // Hide the spinner
+}
 // Function to get tasks from the API and render them
 async function getTasks() {
+    showSpinner();
     try { // Catch any network-level, or JavaScript runtime errors from fetch
         const response = await fetch('/tasks'); // Send a GET request to API (fetch default)
         if(response.ok) {
@@ -28,6 +39,8 @@ async function getTasks() {
         }
     } catch(error) {
         console.error('Failed to fetch tasks -- FETCH:', error);
+    } finally {
+        hideSpinner();
     }
 }
 
