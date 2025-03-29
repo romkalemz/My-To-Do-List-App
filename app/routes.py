@@ -4,7 +4,7 @@ from app import app, api
 
 # Our dictionary of tasks
 tasks = [
-    { "task": "Get rid of this temperary task!", "status": False }
+    { "task": "Get rid of this temporary task!", "status": False }
 ]
 
 # Handling requests to root URL
