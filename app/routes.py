@@ -3,7 +3,9 @@ from flask_restful import Resource
 from app import app, api
 
 # Our dictionary of tasks
-tasks = []
+tasks = [
+    { "task": "Get rid of this temperary task!", "status": False }
+]
 
 # Handling requests to root URL
 class Index(Resource):

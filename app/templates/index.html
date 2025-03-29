@@ -13,11 +13,12 @@
         </ul>
         <form id="task-form">
             <input type="text" id="task-input" name="task" placeholder="Enter a task" required>
-            <button type="submit">Add task</button>
+            <button type="submit" class="add-btn"><img src="{{ url_for('static', filename='images/check_add.png') }}" alt="Add Task" class="add_btn-img"></button>
         </form>
     </div>
     <div id="loading-spinner" class="loading-spinner">
         <div class="spinner"></div>
     </div>
+    <script src="{{ url_for('static', filename='scripts.js') }}"></script>
 </body>
 </html>
