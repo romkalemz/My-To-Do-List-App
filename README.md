@@ -38,10 +38,13 @@ A basic to-do list app with a front-end interface (using HTML, CSS, and JS) and 
 4. INSTALL DEPENDENCIES
    pip install -r requirements.txt
 
-5. RUN APP
+5. INITIALIZE DATABASE
+  python init_db.py
+
+6. RUN APP
    python run.py
 
-6. VISIT WEB-PAGE
+7. VISIT WEB-PAGE
    http://127.0.0.1:5000
    OR if that doesnt work try
    http://localhost:5000
