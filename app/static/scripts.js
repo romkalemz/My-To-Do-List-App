@@ -1,5 +1,5 @@
 const checkImagePath = '/static/images/check.png';
-
+const checkDeleteImagePath = '/static/images/check_delete.png';
 
 function showSpinner() {
     const spinner = document.getElementById('loading-spinner');
@@ -31,6 +31,9 @@ async function getTasks() {
                     <span class="${item.status ? 'done' : ''}">
                         ${item.task}
                     </span>
+                    <button onclick="deleteTask(${index})" class="delete-btn">
+                        <img src="${checkDeleteImagePath}" alt="Delete Icon" class="delete-btn-img">
+                    </button>
                 `;
                 taskListElement.appendChild(taskElement);
             });
@@ -85,11 +88,25 @@ async function updateTask(taskId) {
         if(response.ok) {
             getTasks();
         } else {
-            console.error('Failed to udpate task -- RESPONSE:', response.statusText);
+            console.error('Failed to update task -- RESPONSE:', response.statusText);
         }
     } catch(error) {
         console.error('Failed to update task -- FETCH:', error)
     }
+}
+
+// Function to delete a task by sending a DELETE request to API and then reload page
+async function deleteTask(taskId) {
+    try {
+        const response = await fetch(`/task/${taskId}`, {method: 'DELETE'});
+        if(response.ok) {
+            getTasks();
+        } else {
+            console.error('Failed to delete task -- RESPONSE:', response.statusText);
+        }
+    } catch(error) {
+        console.error('Failed to delete task -- FETCH:', error)
+    } 
 }
 
 // GET tasks when the page loads
