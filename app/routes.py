@@ -37,6 +37,11 @@ class Task(Resource):
             return {'message': 'Task status updated', 'task': task}, 200
         return {'error': 'Task not found'}, 404 # Return JSON response with status code *Not found*
 
+    def delete(self, id):
+        if 0 <= id < len(tasks):
+            tasks.pop(id)   # Grab the task at the [id] position
+            return {'message': 'Task successfully delete'}, 200
+        return {'error': 'Task not found'}, 404
 
 api.add_resource(Index, '/')
 api.add_resource(TaskList, '/tasks')
