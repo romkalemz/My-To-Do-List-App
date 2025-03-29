@@ -22,7 +22,7 @@ class TaskList(Resource):
     # Add a task to the list of tasks
     def post(self):
         task = request.json.get('task').strip() # Parse incoming request, return as Python dict
-        if task: # Check if task is empty or an invalid input
+        if task and len(task) <= 100: # Check if task is empty or if input too long
             tasks.append({'task': task, 'status': False})
             return {'tasks': tasks}, 201 # Return JSON response with status code *Created*
         return {'error': 'Task cannot be empty'}, 400 # Return JSON response with status code *Bad Request*

@@ -54,10 +54,10 @@ img {
     background-color: #005c0c;
 }
 .update-btn {
-    background-color: #883425;
+    background-color: #2c529e;
 }
 .update-btn:hover {
-    background-color: #712b1f;
+    background-color: #213d76;
 }
 ul {
     padding: 0;
@@ -71,4 +71,12 @@ li {
     padding: 10px;
     border-radius: 20px;
     margin-bottom: 10px;
+}
+li span {
+    margin-left: 10px;
+    flex: 1;
+}
+.done {
+    text-decoration: line-through;
+    color: gray;
 }
