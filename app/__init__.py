@@ -8,4 +8,4 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False # For performance
 db = SQLAlchemy(app)
 api = Api(app)
 
-from app import routes
+from app import routes, models

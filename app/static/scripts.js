@@ -21,17 +21,17 @@ async function getTasks() {
             const taskListElement = document.getElementById('task-list');
             taskListElement.innerHTML = ''; // Clear current list display (basically a refresh)
             const data = await response.json();
-            data.tasks.forEach((item, index) => {
+            data.tasks.forEach((item) => {
                 const taskElement = document.createElement('li');
                 taskElement.innerHTML = 
                 `
-                    <button onclick="updateTask(${index})" class="update-btn">
+                    <button onclick="updateTask(${item.id})" class="update-btn">
                         <img src="${checkImagePath}" alt="Check Icon" class="update-btn-img">
                     </button>
                     <span class="${item.status ? 'done' : ''}">
                         ${item.task}
                     </span>
-                    <button onclick="deleteTask(${index})" class="delete-btn">
+                    <button onclick="deleteTask(${item.id})" class="delete-btn">
                         <img src="${checkDeleteImagePath}" alt="Delete Icon" class="delete-btn-img">
                     </button>
                 `;
