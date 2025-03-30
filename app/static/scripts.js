@@ -53,7 +53,10 @@ async function addTask(event) {
     const taskInputElement = document.getElementById('task-input');
     // Trim leading and tracing white spaces
     // And using an external library to "sanitize" user input
-    const taskString = DOMPurify.sanitize(taskInputElement.value.trim());
+    const taskString = DOMPurify.sanitize(taskInputElement.value.trim(), {
+        ALLOWED_TAGS: [], // No HTML tags allowed
+        ALLOWED_ATTR: [] // No HTML attributes allowed
+    });
     // Check if valid input before sending request to API
     if(!taskString) { // Checking if string is empty
         alert('Task cannot be empty!');
